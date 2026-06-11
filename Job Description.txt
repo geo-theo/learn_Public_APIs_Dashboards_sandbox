@@ -1,0 +1,35 @@
+Description
+The Institute for Tourism and Recreation Research (ITRR) invites applications for a Data Systems Manager and Research Associate to support data collection, management, analysis, and visualization efforts across multiple projects focused on tourism and recreation in Montana. This position is responsible for maintaining high-quality datasets, developing and supporting interactive dashboards and public-facing data tools, and collaborating with internal and external partners to ensure data is accurate, accessible, and actionable for research, planning, and public use.
+
+Examples of Duties and Responsibilities
+Manage, clean, validate, and maintain statewide datasets collected through tablets and other sources, ensuring data consistency, integrity, and long-term accessibility. 
+Develop and maintain SQL queries, analytical scripts, and custom datasets to support reporting, dashboard development, economic modeling, and research projects. 
+Create, update, and manage public-facing dashboards and data visualizations in Tableau and on the ITRR website using internal and external data sources. 
+Conduct regular quality assurance reviews of dashboards, visitation counts, and data systems to ensure functionality, accuracy, and consistency. 
+Perform statistical analyses, calculate weighted metrics, and contribute to research reporting and written summaries for diverse audiences. 
+Collaborate with ITRR staff, University partners, and external stakeholders to gather requirements, improve data collection methodologies, and coordinate data-related initiatives. 
+Support the State Parks visitation contract through data review, reporting, stakeholder communication, and recommendations for consistent counting practices. 
+Research and recommend new data sources, tools, software, and frameworks that improve data collection, analysis, visualization, and long-term system sustainability. 
+Minimum Qualifications
+A Bachelor's degree in Computer Science, Mathematics, Data Management, Statistics, or a closely related quantitative field, or equivalent professional experience.  
+Experience working with and processing large datasets with strong attention to detail and accuracy. 
+Proficiency with analytical tools such as SPSS, R, Python, or similar statistical software. 
+Experience with Business Intelligence (BI) and data visualization tools such as Tableau or similar platforms. 
+Experience developing data for web-based interactive displays. 
+Working knowledge of SQL and database querying. 
+Strong problem-solving and critical-thinking skills. 
+Excellent written and verbal communication skills. 
+Familiarity with modern quantitative and qualitative research methods. 
+Proficiency with Microsoft Office, particularly Excel. 
+Strong organizational skills with exceptional attention to detail. 
+Ability to manage multiple projects independently and meet deadlines. 
+Ability to summarize and synthesize research results in a concise written format.
+
+
+Preferred Qualifications
+
+Programming experience with PHP, Perl, Java, or similar languages. 
+Experience with API development and testing (e.g., Postman). 
+Familiarity with Cascade CMS or similar content management systems. 
+Experience with Microsoft SQL Server Management Studio or Microsoft Access. 
+Knowledge of ETL processes and data pipeline development. 

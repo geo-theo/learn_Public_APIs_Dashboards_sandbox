@@ -1,0 +1,14 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      MTDL_DATABASE_URL: sqlite:////app/data/montana_data_lab.db
+      MTDL_NWS_USER_AGENT: MontanaPublicDataLab/0.1 (replace-with-your-email@example.com)
+    command:
+      - sh
+      - -c
+      - python -m montana_data_lab refresh && python -m montana_data_lab serve --host 0.0.0.0

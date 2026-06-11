@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Montana Recreation Data Lab</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/styles.css?v=0.1.0">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__eyebrow">PUBLIC DATA LEARNING SANDBOX</div>
+    <div class="hero__layout">
+      <div>
+        <h1>Montana recreation<br><span>conditions and visitation</span></h1>
+        <p>
+          A working example of API ingestion, ETL, SQL quality controls,
+          weighted metrics, and public-facing data communication.
+        </p>
+      </div>
+      <div class="hero__actions">
+        <button id="refresh-pipeline" class="button">Refresh live data</button>
+        <a class="button button--ghost" href="/docs">Explore the API</a>
+        <span id="refresh-message" class="microcopy"></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="kpis" aria-label="Summary metrics">
+      <article class="kpi">
+        <span>30-day weighted visits</span>
+        <strong id="weighted-visits">--</strong>
+        <small id="visit-window">Synthetic training data</small>
+      </article>
+      <article class="kpi">
+        <span>Valid records</span>
+        <strong id="valid-records">--</strong>
+        <small>Included in public metrics</small>
+      </article>
+      <article class="kpi kpi--warning">
+        <span>Records needing review</span>
+        <strong id="invalid-records">--</strong>
+        <small>Retained for auditability</small>
+      </article>
+      <article class="kpi">
+        <span>Active weather alerts</span>
+        <strong id="active-alerts">--</strong>
+        <small>National Weather Service</small>
+      </article>
+    </section>
+
+    <section class="panel panel--filters">
+      <div>
+        <span class="section-kicker">ANALYSIS CONTROLS</span>
+        <h2>Explore visitation</h2>
+      </div>
+      <label>
+        Park
+        <select id="park-filter"><option value="">All parks</option></select>
+      </label>
+      <label>
+        Window
+        <select id="days-filter">
+          <option value="30">30 days</option>
+          <option value="90" selected>90 days</option>
+          <option value="180">180 days</option>
+        </select>
+      </label>
+      <label>
+        Metric
+        <select id="metric-filter">
+          <option value="raw">Raw count</option>
+          <option value="weighted">Weighted estimate</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="grid grid--wide">
+      <article class="panel chart-panel">
+        <div class="panel__heading">
+          <div>
+            <span class="section-kicker">TABLET VISITATION PIPELINE</span>
+            <h2>Daily visitation trend</h2>
+          </div>
+          <span class="source-pill">Synthetic</span>
+        </div>
+        <div class="chart-wrap"><canvas id="visitation-chart"></canvas></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel__heading">
+          <div>
+            <span class="section-kicker">LIVE PUBLIC APIS</span>
+            <h2>Conditions map</h2>
+          </div>
+          <span class="source-pill source-pill--live">Live</span>
+        </div>
+        <div id="conditions-map" aria-label="Map of parks and stream gauges"></div>
+        <p class="caption">Blue markers are parks. Orange markers are USGS gauges.</p>
+      </article>
+    </section>
+
+    <section class="grid grid--equal">
+      <article class="panel">
+        <div class="panel__heading">
+          <div>
+            <span class="section-kicker">NATIONAL WEATHER SERVICE</span>
+            <h2>Upcoming forecast</h2>
+          </div>
+          <span class="source-pill source-pill--live">Live</span>
+        </div>
+        <div id="forecast-list" class="forecast-list empty-state">Run a refresh to load data.</div>
+      </article>
+
+      <article class="panel">
+        <div class="panel__heading">
+          <div>
+            <span class="section-kicker">USGS WATER SERVICES</span>
+            <h2>Latest streamflow</h2>
+          </div>
+          <span class="source-pill source-pill--live">Live</span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Gauge</th><th>Flow</th><th>Observed</th></tr></thead>
+            <tbody id="streamflow-table">
+              <tr><td colspan="3" class="empty-state">Run a refresh to load data.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid grid--equal">
+      <article class="panel">
+        <div class="panel__heading">
+          <div>
+            <span class="section-kicker">QUALITY ASSURANCE</span>
+            <h2>Latest checks</h2>
+          </div>
+        </div>
+        <div id="quality-list" class="status-list empty-state">No checks loaded.</div>
+      </article>
+
+      <article class="panel">
+        <div class="panel__heading">
+          <div>
+            <span class="section-kicker">DATA OPERATIONS</span>
+            <h2>Pipeline run log</h2>
+          </div>
+        </div>
+        <div id="pipeline-list" class="status-list empty-state">No runs loaded.</div>
+      </article>
+    </section>
+
+    <section class="learning-callout">
+      <div>
+        <span class="section-kicker">YOUR NEXT EXPERIMENT</span>
+        <h2>Open the data behind this page.</h2>
+        <p>
+          Change a filter, inspect the network request, run its SQL equivalent,
+          then modify the endpoint. The dashboard is intentionally transparent.
+        </p>
+      </div>
+      <div class="callout-links">
+        <a href="/docs">Interactive API docs</a>
+        <a href="/api/export/visitation.csv?days=90">Download CSV</a>
+        <a href="https://www.weather.gov/documentation/services-web-api">NWS source docs</a>
+        <a href="https://waterservices.usgs.gov/docs/">USGS source docs</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Training project. Visitation records are synthetic and are not official statistics.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/app.js?v=0.1.0"></script>
+</body>
+</html>

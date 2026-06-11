@@ -1,0 +1,65 @@
+{
+  "info": {
+    "_postman_id": "a3471c71-f87b-4d16-b824-3ba866a93466",
+    "name": "Montana Public Data Lab",
+    "description": "Requests for practicing REST API testing against the local learning project.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/health"
+      }
+    },
+    {
+      "name": "Weighted visitation by park",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/visitation?days=90&metric=weighted&group_by=park",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "visitation"],
+          "query": [
+            {"key": "days", "value": "90"},
+            {"key": "metric", "value": "weighted"},
+            {"key": "group_by", "value": "park"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Latest streamflow",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/streamflow/latest"
+      }
+    },
+    {
+      "name": "Latest quality checks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/quality/latest"
+      }
+    },
+    {
+      "name": "Refresh pipeline",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": "{{baseUrl}}/api/admin/refresh"
+      }
+    }
+  ]
+}
